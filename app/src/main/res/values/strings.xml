@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Rick and Morty</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="character_list">Character list</string>
+    <string name="character_image">Character Image</string>
+    <string name="next">next</string>
+    <string name="page">Page</string>
+    <string name="before">before</string>
+    <string name="info_page">Info page</string>
 </resources>

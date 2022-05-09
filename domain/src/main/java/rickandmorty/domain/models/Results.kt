@@ -10,4 +10,10 @@ data class Info(
     var pages: Int,
     var next: Int?,
     var prev: Int?,
-)
+) {
+    val currentPage: Int = when {
+        next != null -> next!! - 1
+        prev != null -> prev!! + 1
+        else -> 0
+    }
+}
