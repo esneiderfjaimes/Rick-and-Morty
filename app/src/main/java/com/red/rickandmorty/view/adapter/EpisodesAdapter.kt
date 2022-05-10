@@ -2,6 +2,7 @@ package com.red.rickandmorty.view.adapter
 
 import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.red.rickandmorty.databinding.ItemEpisodeBinding
@@ -10,7 +11,7 @@ import com.red.rickandmorty.view.parcelables.EpisodeParcelable
 typealias PairEpisode = Pair<Int, EpisodeParcelable?>
 
 class EpisodesAdapter(
-    private var items: List<PairEpisode> = listOf(),
+    private var items: MutableList<PairEpisode> = mutableListOf(),
 ) : RecyclerView.Adapter<EpisodesAdapter.ViewHolder>() {
 
     // create an inner class with name ViewHolder
@@ -31,6 +32,14 @@ class EpisodesAdapter(
                 else Color.argb(12, 128, 128, 128)
             )
 
+            if (item.second == null) {
+                episodeAirDate.visibility = View.GONE
+                episodeName.visibility = View.GONE
+            } else {
+                episodeAirDate.visibility = View.VISIBLE
+                episodeName.visibility = View.VISIBLE
+            }
+
             val idText = item.second?.let { episode ->
                 episodeName.text = episode.name
                 episodeAirDate.text = episode.airDate
@@ -41,5 +50,13 @@ class EpisodesAdapter(
     }
 
     override fun getItemCount(): Int = items.size
+
+    fun updateEpisode(episode: EpisodeParcelable) {
+        val index = items.indexOfFirst { it.first == episode.id }
+        if (index != -1) {
+            items[index] = episode.id to episode
+            notifyItemChanged(index)
+        }
+    }
 
 }

@@ -17,3 +17,13 @@ data class Info(
         else -> 0
     }
 }
+
+/**
+ * A generic class that contains a value with the possible response from the repository.
+ * @param T value type
+ */
+sealed class Result<out T : Any> {
+    data class Success<out T : Any>(val value: T) : Result<T>()
+    data class Failure(val exception: Throwable) : Result<Nothing>()
+    object Finish : Result<Nothing>()
+}

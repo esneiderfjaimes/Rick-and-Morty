@@ -23,3 +23,6 @@ fun Fragment.navigateBack() {
             .popBackStack()
     }
 }
+
+fun <K,V> Map<K,V>.toMutableList() = toList().toMutableList()
+fun <K,V> Map<K,V>.keysList() = keys.toList()
