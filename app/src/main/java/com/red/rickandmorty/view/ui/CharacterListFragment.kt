@@ -16,6 +16,7 @@ import com.red.rickandmorty.R
 import com.red.rickandmorty.databinding.FragmentCharacterListBinding
 import com.red.rickandmorty.view.adapter.GridAdapter
 import com.red.rickandmorty.view.parcelables.toParcelable
+import com.red.rickandmorty.view.util.navigateTo
 import com.red.rickandmorty.viewmodel.CharactersViewModel
 import com.red.rickandmorty.viewmodel.CharactersViewModel.CharacterListUiState
 import dagger.hilt.android.AndroidEntryPoint
@@ -49,7 +50,7 @@ class CharacterListFragment : Fragment() {
                 }
             }
             gridAdapter = GridAdapter(requireContext()) {
-
+                navigateTo(CharacterListFragmentDirections.toDetails(it))
             }
             charactersGrid.adapter = gridAdapter
             topAppBar.setOnMenuItemClickListener { menuItem ->

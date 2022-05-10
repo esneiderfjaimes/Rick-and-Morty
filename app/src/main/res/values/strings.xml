@@ -7,4 +7,8 @@
     <string name="page">Page</string>
     <string name="before">before</string>
     <string name="info_page">Info page</string>
+    <string name="gender">Gender</string>
+    <string name="race">Race</string>
+    <string name="origin_location">Origin location</string>
+    <string name="location">Location</string>
 </resources>

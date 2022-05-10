@@ -6,7 +6,7 @@
         android:enabled="false"
         android:title="@string/info_page"
         app:actionLayout="@layout/view_info_page"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/before"

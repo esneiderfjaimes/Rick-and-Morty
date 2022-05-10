@@ -3,11 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/characterListFragment">
+    app:startDestination="@id/characterList">
 
     <fragment
-        android:id="@+id/characterListFragment"
+        android:id="@+id/characterList"
         android:name="com.red.rickandmorty.view.ui.CharacterListFragment"
         android:label="fragment_character_list"
-        tools:layout="@layout/fragment_character_list" />
+        tools:layout="@layout/fragment_character_list">
+        <action
+            android:id="@+id/to_details"
+            app:destination="@id/characterDetails"
+            app:enterAnim="@anim/right_enter_anim"
+            app:exitAnim="@anim/right_exit_anim"
+            app:popEnterAnim="@anim/right_pop_enter_anim"
+            app:popExitAnim="@anim/right_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/characterDetails"
+        android:name="com.red.rickandmorty.view.ui.CharacterDetailsFragment"
+        tools:layout="@layout/fragment_character_details">
+        <argument
+            android:name="character"
+            app:argType="com.red.rickandmorty.view.parcelables.CharacterParcelable" />
+    </fragment>
 </navigation>
