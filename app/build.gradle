@@ -43,11 +43,11 @@ dependencies {
     implementation project(":data")
     implementation project(":domain")
     implementation project(":framework:api")
+    implementation project(":framework:database")
 
     implementation(androidx_core_lib)
     implementation(kotlin_std_lib)
     implementation(kotlinx_coroutines_lib)
-
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.1"
     implementation kotlinx_coroutines_lib
 

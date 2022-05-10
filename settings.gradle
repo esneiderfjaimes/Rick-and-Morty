@@ -16,4 +16,5 @@ rootProject.name = "Rick and Morty"
 include ':app'
 include ':data'
 include ':framework:api'
+include ':framework:database'
 include ':domain'

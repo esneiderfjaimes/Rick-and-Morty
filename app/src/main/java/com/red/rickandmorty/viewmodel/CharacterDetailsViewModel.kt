@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.red.code015.data.Repository
+import com.red.code015.data.usercases.GetEpisodeUseCase
 import com.red.rickandmorty.view.parcelables.EpisodeParcelable
 import com.red.rickandmorty.view.parcelables.toParcelable
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CharacterDetailsViewModel @Inject constructor(
-    private val repository: Repository,
+    private val getEpisodeUseCase: GetEpisodeUseCase,
 ) : ViewModel() {
 
     private val _episode: MutableLiveData<EpisodeParcelable> = MutableLiveData()
@@ -25,7 +25,7 @@ class CharacterDetailsViewModel @Inject constructor(
 
     fun searchEpisodes(ids: List<Int>) {
         viewModelScope.launch {
-            repository.getEpisodes(*ids.toIntArray())
+            getEpisodeUseCase(ids.toIntArray())
                 .mapNotNull { // just collect results success
                     if (it is Result.Success)
                         it.value.toParcelable()

@@ -1,0 +1,32 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdk 31
+}
+
+dependencies {
+
+    implementation project(":data")
+    implementation project(":domain")
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.1"
+
+    implementation(androidx_core_lib)
+    implementation(kotlinx_coroutines_lib)
+
+    implementation(hilt_lifecycle_viewmodel_lib)
+    kapt(hilt_compiler)
+    implementation(dagger_hilt_lib)
+    kapt(dagger_hilt_compiler)
+
+    implementation(gson_lib)
+
+    implementation(room_lib)
+    kapt(room_compiler)
+
+}

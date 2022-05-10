@@ -3,7 +3,7 @@ package com.red.rickandmorty.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.red.code015.data.Repository
+import com.red.code015.data.usercases.GetPageCharactersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CharactersViewModel @Inject constructor(
-    private val repository: Repository,
+    private val getPageCharactersUseCase: GetPageCharactersUseCase,
 ) : ViewModel() {
 
     // Backing property to avoid state updates from other classes
@@ -31,7 +31,7 @@ class CharactersViewModel @Inject constructor(
 
     private fun getPageCharacters(pageId: Int) {
         viewModelScope.launch {
-            repository.getPageCharacters(pageId).flowOn(Dispatchers.IO)
+            getPageCharactersUseCase(pageId).flowOn(Dispatchers.IO)
                 .onStart { _uiState.value = CharacterListUiState.Loading() }
                 .catch {
                     _uiState.value = CharacterListUiState.Loading(false)
