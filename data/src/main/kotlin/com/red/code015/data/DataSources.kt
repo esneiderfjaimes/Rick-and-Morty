@@ -9,6 +9,7 @@ interface RemoteDataSource {
 }
 
 interface LocalDataSource {
+    suspend fun isEmptyCharacters(): Boolean
     suspend fun insertPageCharacters(pageCharacters: PageCharacters)
     suspend fun getPageCharacters(page: Int): PageCharacters?
     suspend fun insertEpisode(episode: Episode)

@@ -17,16 +17,22 @@ fun CharacterParcelable.load(
     location: TextView,
 ) {
     this.let { character ->
-        image.load(character.image) {
-            crossfade(true)
-            transformations(CircleCropTransformation())
-        }
+        loadImageIn(image)
         status.text = character.status
         name.text = character.name
         gender.text = character.gender
         race.text = character.species
         origin.text = character.origin.name
         location.text = character.location.name
+    }
+}
+
+fun CharacterParcelable.loadImageIn(image: ImageView) {
+    image.load(this.image) {
+        crossfade(true)
+        transformations(CircleCropTransformation())
+        placeholder(ImageDefault.getDrawable(image))
+        error(ImageDefault.getDrawable(image))
     }
 }
 

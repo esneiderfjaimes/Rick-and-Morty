@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import coil.load
 import coil.transform.CircleCropTransformation
+import com.red.rickandmorty.R
 import com.red.rickandmorty.databinding.ItemCharacterBinding
 import com.red.rickandmorty.view.parcelables.CharacterParcelable
+import com.red.rickandmorty.view.util.loadImageIn
 import com.red.rickandmorty.view.util.statusDeco
 
 class GridAdapter(
@@ -32,10 +34,7 @@ class GridAdapter(
         dataBinding.apply {
             val item = items[position]
 
-            image.load(item.image) {
-                crossfade(true)
-                transformations(CircleCropTransformation())
-            }
+            item.loadImageIn(image)
 
             status.text = item.status
             item.statusDeco(status)

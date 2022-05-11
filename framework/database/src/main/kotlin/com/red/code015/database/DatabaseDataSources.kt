@@ -13,6 +13,10 @@ class RoomDataSource(
     private val episodesDao by lazy { database.episodesDao() }
     private val pageInfoDao by lazy { database.pageInfoDao() }
 
+    override suspend fun isEmptyCharacters(): Boolean {
+        return charactersDao.first() == null
+    }
+
     override suspend fun insertPageCharacters(pageCharacters: PageCharacters) {
 
         val characterEntityList = pageCharacters.run {

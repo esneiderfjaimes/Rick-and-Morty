@@ -25,6 +25,8 @@ class Repository @Inject constructor(
      * @return query flow
      */
     fun getPageCharacters(pageId: Int) = flow {
+        val requiresPreload = local.isEmptyCharacters()
+
         var pageCharacters: PageCharacters?
         val time = measureTimeMillis {
 
@@ -42,7 +44,30 @@ class Repository @Inject constructor(
 
         pageCharacters?.let { emit(it) }
         Log.i("Rep", "getPageCharacters($pageId): time:$time")
+
+        if (requiresPreload)
+            pageCharacters?.info?.next?.let { tryPreload(it) }
+
     }.flowOn(Dispatchers.IO)
+
+    private suspend fun tryPreload(pageId: Int = 1) {
+        val next: Int?
+        val time = measureTimeMillis {
+            try {
+                remote.getPageCharacters(pageId).let {
+                    local.insertPageCharacters(it)
+                    next = it.info.next
+                }
+            } catch (e: Exception) {
+                Log.e("Rep", "findAndSave($pageId): e:${e.message}")
+                return
+            }
+        }
+        Log.i("Rep", "findAndSave($pageId): time:$time")
+
+        // Keep trying if possible
+        next?.let { tryPreload(it) }
+    }
 
     /**
      * loop through the list of identifiers and issue an episode result

@@ -8,6 +8,9 @@ import androidx.room.Query
 @Dao
 interface CharactersDao {
 
+    @Query("SELECT * FROM character_table limit 1")
+    suspend fun first(): CharacterEntity?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(vararg characterEntity: CharacterEntity)
 
