@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Theme.RickAndMorty.Starting" parent="Theme.SplashScreen">
         // Set the splash screen background, animated icon, and animation duration.
@@ -8,11 +8,13 @@
         // Use windowSplashScreenAnimatedIcon to add either a drawable or an
         // animated drawable. One of these is required.
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
-        <item name="windowSplashScreenAnimationDuration">200</item>  # Required for
+        <item name="windowSplashScreenAnimationDuration">200</item>
+        # Required for
         # animated icons
 
         // Set the theme of the Activity that directly follows your splash screen.
-        <item name="postSplashScreenTheme">@style/Theme.RickAndMorty</item>  # Required.
+        <item name="postSplashScreenTheme">@style/Theme.RickAndMorty</item>
+        # Required.
     </style>
 
     <style name="Text">
@@ -28,6 +30,63 @@
 
     <style name="BodyText" parent="Text">
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CardPrint">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSizeTopRight">12dp</item>
+        <item name="cornerSizeTopLeft">12dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="ShapeAppearance.Corner50" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+
+    <style name="PreviewBase">
+        <item name="android:layout_width">0px</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize" tools:ignore="PxUsage">24px</item>
+    </style>
+
+    <style name="PreviewBody" parent="PreviewBase">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="PreviewBody.Center" parent="PreviewBody">
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="PreviewTitle" parent="PreviewBase">
+        <item name="android:layout_marginTop" tools:ignore="PxUsage">15px</item>
+    </style>
+
+    <style name="PreviewTitle.Center" parent="PreviewTitle">
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="PreviewSpBase" parent="PreviewBase">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="PreviewSpBody" parent="PreviewSpBase">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="PreviewSpBody.Center" parent="PreviewSpBody">
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="PreviewSpTitle" parent="PreviewSpBase">
+        <item name="android:layout_marginTop">7.5dp</item>
+    </style>
+
+    <style name="PreviewSpTitle.Center" parent="PreviewSpTitle">
+        <item name="android:textAlignment">center</item>
     </style>
 
 </resources>

@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Rick and Morty</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="character_list">Character list</string>
     <string name="character_image">Character Image</string>
     <string name="next">next</string>
@@ -11,4 +10,9 @@
     <string name="race">Race</string>
     <string name="origin_location">Origin location</string>
     <string name="location">Location</string>
+    <string name="print">Print</string>
+    <string name="status">Status</string>
+    <string name="save_card">Save card</string>
+    <string name="card_preview">Card preview</string>
+    <string name="back">back</string>
 </resources>

@@ -26,5 +26,19 @@
         <argument
             android:name="character"
             app:argType="com.red.rickandmorty.view.parcelables.CharacterParcelable" />
+        <action
+            android:id="@+id/to_print"
+            app:destination="@id/characterPrintFragment" />
     </fragment>
+
+    <dialog
+        android:id="@+id/characterPrintFragment"
+        android:name="com.red.rickandmorty.view.ui.CharacterPrintFragment"
+        android:label="CharacterPrintFragment"
+        tools:layout="@layout/fragment_character_print">
+        <argument
+            android:name="character"
+            app:argType="com.red.rickandmorty.view.parcelables.CharacterParcelable" />
+    </dialog>
+
 </navigation>

@@ -1,0 +1,132 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_print"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@android:color/white"
+    android:padding="6dp">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:contentDescription="@string/character_image"
+        android:src="@mipmap/image_unknown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
+        android:textColor="@android:color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image"
+        tools:text="Rick Sanchez" />
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="7.5sp"
+        android:background="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <TextView
+        android:id="@+id/status_title"
+        style="@style/PreviewSpTitle.Center"
+        android:text="@string/status"
+        app:layout_constraintEnd_toStartOf="@id/gender_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/separator" />
+
+    <TextView
+        android:id="@+id/gender_title"
+        style="@style/PreviewSpTitle.Center"
+        android:text="@string/gender"
+        app:layout_constraintEnd_toStartOf="@+id/race_title"
+        app:layout_constraintStart_toEndOf="@+id/status_title"
+        app:layout_constraintTop_toBottomOf="@+id/separator" />
+
+    <TextView
+        android:id="@+id/race_title"
+        style="@style/PreviewSpTitle.Center"
+        android:text="@string/race"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/gender_title"
+        app:layout_constraintTop_toBottomOf="@+id/separator" />
+
+    <TextView
+        android:id="@+id/status"
+        style="@style/PreviewSpBody.Center"
+        app:layout_constraintEnd_toStartOf="@id/gender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/status_title"
+        tools:text="Alive" />
+
+    <TextView
+        android:id="@+id/gender"
+        style="@style/PreviewSpBody.Center"
+        app:layout_constraintEnd_toStartOf="@+id/race"
+        app:layout_constraintStart_toEndOf="@+id/status"
+        app:layout_constraintTop_toTopOf="@+id/status"
+        tools:text="Male" />
+
+    <TextView
+        android:id="@+id/race"
+        style="@style/PreviewSpBody.Center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/gender"
+        app:layout_constraintTop_toTopOf="@+id/status"
+        tools:text="Human" />
+
+    <View
+        android:id="@+id/separator2"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="7.5sp"
+        android:background="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@+id/gender" />
+
+    <TextView
+        android:id="@+id/origin_title"
+        style="@style/PreviewSpTitle"
+        android:layout_marginHorizontal="7.5sp"
+        android:text="@string/origin_location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/separator2" />
+
+    <TextView
+        android:id="@+id/location_title"
+        style="@style/PreviewSpTitle"
+        android:text="@string/location"
+        app:layout_constraintEnd_toEndOf="@+id/origin"
+        app:layout_constraintStart_toStartOf="@+id/origin"
+        app:layout_constraintTop_toBottomOf="@+id/origin" />
+
+    <TextView
+        android:id="@+id/origin"
+        style="@style/PreviewSpBody"
+        app:layout_constraintEnd_toEndOf="@+id/origin_title"
+        app:layout_constraintStart_toStartOf="@+id/origin_title"
+        app:layout_constraintTop_toBottomOf="@+id/origin_title"
+        tools:text="Earth (C-137)" />
+
+    <TextView
+        android:id="@+id/location"
+        style="@style/PreviewSpBody"
+        app:layout_constraintEnd_toEndOf="@+id/location_title"
+        app:layout_constraintStart_toStartOf="@+id/location_title"
+        app:layout_constraintTop_toBottomOf="@+id/location_title"
+        tools:text="Citadel of Ricks" />
+</androidx.constraintlayout.widget.ConstraintLayout>

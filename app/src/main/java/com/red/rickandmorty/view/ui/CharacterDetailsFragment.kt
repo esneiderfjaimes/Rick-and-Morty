@@ -1,6 +1,5 @@
 package com.red.rickandmorty.view.ui
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,14 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import coil.load
-import coil.transform.CircleCropTransformation
 import com.red.rickandmorty.databinding.FragmentCharacterDetailsBinding
 import com.red.rickandmorty.view.adapter.EpisodesAdapter
 import com.red.rickandmorty.view.parcelables.EpisodeParcelable
-import com.red.rickandmorty.view.util.keysList
-import com.red.rickandmorty.view.util.navigateBack
-import com.red.rickandmorty.view.util.toMutableList
+import com.red.rickandmorty.view.util.*
 import com.red.rickandmorty.viewmodel.CharacterDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,29 +28,18 @@ class CharacterDetailsFragment : Fragment() {
     private lateinit var episodesAdapter: EpisodesAdapter
 
     override fun onCreateView(i: LayoutInflater, c: ViewGroup?, b: Bundle?): View {
-        val item = args.character
+        val character = args.character
         _binding = FragmentCharacterDetailsBinding.inflate(i, c, false).apply {
 
-            image.load(item.image) {
-                crossfade(true)
-                transformations(CircleCropTransformation())
+            character.load(image, name, status, gender, race, origin, location)
+            character.statusDeco(status)
+
+            fabBack.setOnClickListener { navigateBack() }
+            fabPrint.setOnClickListener {
+                navigateTo(CharacterDetailsFragmentDirections.toPrint(character))
             }
-
-            status.text = item.status
-            when (item.status) {
-                "Alive" -> status.setTextColor(Color.GREEN)
-                "Dead" -> status.setTextColor(Color.RED)
-            }
-
-            name.text = item.name
-            gender.text = item.gender
-            race.text = item.species
-            origin.text = item.origin.name
-            location.text = item.location.name
-
-            appBarLayout.setNavigationOnClickListener { navigateBack() }
         }
-        setUpRecyclerView(item.episodes)
+        setUpRecyclerView(character.episodes)
         return binding.root
     }
 

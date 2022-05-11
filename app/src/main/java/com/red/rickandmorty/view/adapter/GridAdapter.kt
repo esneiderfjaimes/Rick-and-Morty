@@ -1,7 +1,6 @@
 package com.red.rickandmorty.view.adapter
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,7 @@ import coil.load
 import coil.transform.CircleCropTransformation
 import com.red.rickandmorty.databinding.ItemCharacterBinding
 import com.red.rickandmorty.view.parcelables.CharacterParcelable
+import com.red.rickandmorty.view.util.statusDeco
 
 class GridAdapter(
     context: Context,
@@ -38,11 +38,7 @@ class GridAdapter(
             }
 
             status.text = item.status
-            when (item.status) {
-                "Alive" -> status.setTextColor(Color.GREEN)
-                "Dead" -> status.setTextColor(Color.RED)
-                else -> status.setTextColor(Color.GRAY)
-            }
+            item.statusDeco(status)
 
             name.text = item.name
 
